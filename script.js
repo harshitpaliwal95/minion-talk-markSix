@@ -9,9 +9,14 @@ const serverUrl = 'https://api.funtranslations.com/translate/minion.json';
 function createURL() {
   return `${serverUrl}?text=${translateInput.value}`;
 }
-
+function errorHandler() {
+  translateOutput.innerHTML = 'somthing went wrong with server';
+  alert('someting went wrong!!');
+  setTimeout(() => {
+    translateOutput.innerHTML = '';
+  }, 2500);
+}
 translateBtn.addEventListener('click', () => {
-  console.log(translateInput.value);
   if (translateInput.value != '') {
     fetch(createURL(translateInput.value))
       .then(response => response.json())
@@ -19,7 +24,7 @@ translateBtn.addEventListener('click', () => {
         console.log(json.contents);
         translateOutput.innerHTML = json.contents.translated;
       })
-      .catch(() => alert('someting went wrong!!'));
+      .catch(errorHandler);
   } else {
     translateOutput.innerHTML = 'please enter something';
     setInterval(() => {
