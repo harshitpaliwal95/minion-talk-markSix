@@ -8,7 +8,7 @@ how to run - open index file in your browser
 
 # technology
 
-html, bootstrap, JavaScript
+Html, Css, JavaScript
 
 # completed
 
